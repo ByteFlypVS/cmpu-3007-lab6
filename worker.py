@@ -6,7 +6,7 @@ import json
 app = Flask(__name__)
 
 def get_api_key() -> str:
-    secret = os.environ.get("COMPUTE_API_KEY")
+    secret = os.environ.get("cmpu-3007-lab6-secret")
     if secret:
         return secret
     else:
@@ -38,7 +38,7 @@ def addWorker(token, num):
       tdata=json.load(p)
     tdata['name']='slave'+str(num)
     data=json.dumps(tdata)
-    url='https://www.googleapis.com/compute/v1/projects/spark-371009/zones/europe-west1-b/instances'
+    url='https://www.googleapis.com/compute/v1/projects/trans-aurora-408003/zones/europe-central2-a/instances'
     headers={"Authorization": "Bearer "+token}
     resp=requests.post(url,headers=headers, data=data)
     if resp.status_code==200:     
